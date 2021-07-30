@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <style>
+ 
+ 
+        table {
+                  margin: 0 auto;
+                  width: 60%;
+                  border: 2px solid #aaa;
+                  border-collapse: collapse;
+              }
+              
+              table th, table td {
+                  border: 2px solid #aaa;
+                  padding: 5px;
+              }
+              
+              th {
+                  background-color: #eee;
+              }
+            </style>
+        </head>
+        <body>
+         
+            <script>
+         
+         
+         
+         
+            </script>
+         
+            <table  >
+         
+         
+                <tr>
+                 <td ><input type="text" id="aa"></td>   
+                 <td><input type="button" value="add" onclick="add(this)"></td>
+                </tr>
+            </table>
+         
+            <table id="tain">
+                <tr>
+                    <td>任务列表</td>
+                    <td>时间</td>
+                    <td>完成</td>
+                    <td>删除</td>
+                    
+                </tr>
+         
+         
+         
+            </table>
+            
+        </body>
+         
+        <script>
+           function add() {
+            //n拿到input输入框的值
+           var ss= $('#aa').val();
+            console.log(ss);//打印一下，是否拿到对应的值
+            var myDate = new Date;
+        var year = myDate.getFullYear(); //获取当前年
+        var mon = myDate.getMonth() + 1; //获取当前月
+        var date = myDate.getDate(); //获取当前日
+        var h = myDate.getHours();//获取当前小时数(0-23)
+        var m = myDate.getMinutes();//获取当前分钟数(0-59)
+        var s = myDate.getSeconds();//获取当前秒
+        var week = myDate.getDay();
+        var weeks = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+        console.log(year + "年" + mon + "月" + date + "日" + weeks[week]+h+"小时"+m+"分")
+         
+         
+        //拼接和添加表格的列
+            var dd=$("<tr><td>"+ss+"</td><td>"+year + "年" + mon + "月" + date + "日" + weeks[week]+h+"小时"+m+"分"+s+"秒"
+                +"</td><td><input type='button' value='完成' onclick='wan(this)' id='wans'></td><td><input type='button' value='删除' onclick='del(this)' id='dele'></td></tr>");
+         
+            console.log(dd);
+            $('#tain').append(dd);//添加表格
+         
+               
+           }
+           //删除表格
+          function  del() {
+         
+            $('#dele').parent().parent().remove();
+            }
+       
+            function wan(dom) {
+            
+            //注意这里的思路是通过按钮来追踪到tr所在列表的序列，拿到这个序列对这个序列包含的td进行样式的添加
+              var yy=$(dom).parent().parent();//追踪该tr的上上一级所在表的序列
+                    //实时对表格的样式添加样式。
+              yy.children().eq(0).css('text-decoration','line-through').css('background','red');
+              yy.children().eq(1).css('text-decoration','line-through').css('background','red');
+                    
+         
+         
+        }
+         
+            
+                
+          
+         
+        </script>
+</body>
+</html>
